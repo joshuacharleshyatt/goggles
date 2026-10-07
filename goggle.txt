@@ -132,9 +132,9 @@ $boost=6,site=who.int
 $boost=9,site=canada.ca
 $boost=8,site=healthycanadians.gc.ca
 $boost=8,site=statscan.gc.ca
-$boost=7,site=canada.ca/en/public-health
-$boost=7,site=canada.ca/en/health
-$boost=6,site=canada.ca/en/innovation
+/en/public-health/$boost=7,site=canada.ca
+/en/health/$boost=7,site=canada.ca
+/en/innovation/$boost=6,site=canada.ca
 
 ! --- Australia / NZ ---
 $boost=9,site=gov.au
@@ -205,12 +205,12 @@ $boost=7,site=doi.org
 $boost=7,site=semanticscholar.org
 $boost=7,site=plos.org
 $boost=7,site=frontiersin.org
-$boost=7,site=*.edu
-$boost=6,site=*.ac.uk
-$boost=6,site=*.edu.au
-$boost=6,site=*.edu.ca
-$boost=6,site=*.ac.jp
-$boost=6,site=*.edu.in
+$boost=7,site=https://*.edu
+$boost=6,site=https://*.ac.uk
+$boost=6,site=https://*.edu.au
+$boost=6,site=https://*.edu.ca
+$boost=6,site=https://*.ac.jp
+$boost=6,site=https://*.edu.in
 
 ! ============================================================
 ! LAYER 5 — BOOST: Medical / Health (international)
