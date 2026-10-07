@@ -95,7 +95,7 @@ $boost=8,site=nhs.uk
 $boost=8,site=ukhealthsecurity.uk
 $boost=7,site=officefornationalstatistics.gov.uk
 $boost=7,site=pubmed.ncbi.nlm.nih.gov
-/news$boost=7,site=bbc.co.uk
+/news/$boost=7,site=bbc.co.uk
 $boost=6,site=royalsociety.org
 $boost=6,site=wellcome.org
 
