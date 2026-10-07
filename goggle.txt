@@ -1,0 +1,312 @@
+! name: Real Information (International)
+! description: Filters out AI content farms. Boosts authoritative
+!   international government, academic, and human-written sources.
+!   US gov political sites downranked; data/science sites kept.
+! public: true
+! author: Joshua Hyatt
+
+! ============================================================
+! LAYER 1 — DISCARD: AI content farms, scrapers, social media
+! ============================================================
+
+! --- AI content mills / programmatic SEO ---
+$discard,site=equityatlas.com
+$discard,site=casual.app
+$discard,site=yourstory.com
+$discard,site=thebloggersinsider.com
+$discard,site=theinsidermedia.com
+$discard,site=theinspinner.com
+$discard,site=theinsiderr.com
+$discard,site=experts-exchange.com
+$discard,site=geeky-gadgets.com
+$discard,site=techbloat.com
+$discard,site=bestreviews.com
+$discard,site=top10reviews.com
+
+! --- Social / aggregator noise ---
+$discard,site=facebook.com
+$discard,site=instagram.com
+$discard,site=twitter.com
+$discard,site=x.com
+$discard,site=tiktok.com
+$discard,site=youtube.com
+$discard,site=pinterest.com
+$discard,site=reddit.com
+$discard,site=quora.com
+$discard,site=linkedin.com
+$discard,site=medium.com
+$discard,site=dev.to
+$discard,site=hashnode.dev
+
+! ============================================================
+! LAYER 2 — DOWNRANK: US political messaging + AI-mixed sites
+! ============================================================
+
+! --- US Gov: Political / propaganda-adjacent ---
+$downrank=6,site=whitehouse.gov
+$downrank=6,site=state.gov
+$downrank=6,site=dod.gov
+$downrank=6,site=defense.gov
+$downrank=5,site=usaid.gov
+$downrank=5,site=usinfo.state.gov
+$downrank=5,site=voanews.com
+$downrank=5,site=radiofreeeurope.org
+$downrank=4,site=cisa.gov
+$downrank=4,site=fema.gov
+$downrank=4,site=usda.gov
+$downrank=4,site=treasury.gov
+$downrank=4,site=homelandsecurity.gov
+$downrank=3,site=cdc.gov
+$downrank=3,site=fda.gov
+$downrank=3,site=hhs.gov
+
+! --- US Gov: Data/science (kept but not boosted hard) ---
+$boost=3,site=census.gov
+$boost=3,site=nasa.gov
+$boost=3,site=nist.gov
+$boost=3,site=noaa.gov
+$boost=3,site=usgs.gov
+$boost=3,site=nih.gov
+$boost=3,site=pubmed.ncbi.nlm.nih.gov
+$boost=3,site=data.gov
+$boost=3,site=sec.gov
+$boost=3,site=irs.gov
+$boost=3,site=epa.gov
+
+! --- Coding sites flooded with AI content ---
+$downrank=5,site=w3schools.com
+$downrank=4,site=geeksforgeeks.org
+$downrank=4,site=tutorialspoint.com
+$downrank=4,site=programiz.com
+
+! --- Health sites with heavy AI content ---
+$downrank=4,site=healthline.com
+$downrank=4,site=verywellhealth.com
+$downrank=4,site=medicalnewstoday.com
+$downrank=3,site=webmd.com
+
+! ============================================================
+! LAYER 3 — BOOST: International Government (top tier)
+! ============================================================
+
+! --- United Kingdom ---
+$boost=9,site=gov.uk
+$boost=8,site=nhs.uk
+$boost=8,site=ukhealthsecurity.uk
+$boost=7,site=officefornationalstatistics.gov.uk
+$boost=7,site=pubmed.ncbi.nlm.nih.gov
+$boost=7,site=bbc.co.uk/news
+$boost=6,site=royalsociety.org
+$boost=6,site=wellcome.org
+
+! --- European Union / European institutions ---
+$boost=9,site=ec.europa.eu
+$boost=8,site=eurostat.europa.eu
+$boost=8,site=ecdc.europa.eu
+$boost=8,site=ema.europa.eu
+$boost=7,site=who.int
+$boost=7,site=health.ec.europa.eu
+$boost=7,site=data.europa.eu
+$boost=6,site=europa.eu
+$boost=6,site=euro.who.int
+$boost=6,site=frontiersin.org
+
+! --- France ---
+$boost=8,site=gouv.fr
+$boost=8,site=sante.gouv.fr
+$boost=7,site=inserm.fr
+$boost=7,site=insee.fr
+$boost=7,site=annuaire.sante.fr
+$boost=6,site=france-publique.fr
+
+! --- Germany ---
+$boost=8,site=bund.de
+$boost=8,site=gesundheit.bund.de
+$boost=8,site=robbst.de
+$boost=7,site=ekz.de
+$boost=7,site=destatis.de
+$boost=7,site=ifges.de
+$boost=6,site=who.int
+
+! --- Canada ---
+$boost=9,site=canada.ca
+$boost=8,site=healthycanadians.gc.ca
+$boost=8,site=statscan.gc.ca
+$boost=7,site=canada.ca/en/public-health
+$boost=7,site=canada.ca/en/health
+$boost=6,site=canada.ca/en/innovation
+
+! --- Australia / NZ ---
+$boost=9,site=gov.au
+$boost=8,site=health.gov.au
+$boost=8,site=abrs.gov.au
+$boost=8,site=statista.com
+$boost=7,site=abs.gov.au
+$boost=7,site=therm.gov.au
+$boost=7,site=nz.govt.nz
+$boost=7,site=moh.govt.nz
+$boost=6,site=stats.govt.nz
+
+! --- Japan ---
+$boost=8,site=mhlw.go.jp
+$boost=7,site=stat.go.jp
+$boost=7,site=nih.go.jp
+$boost=6,site=japan-kisho.go.jp
+
+! --- South Korea ---
+$boost=8,site=mohw.go.kr
+$boost=7,site=kostat.go.kr
+$boost=7,site=korea.go.kr
+
+! --- India ---
+$boost=8,site=india.gov.in
+$boost=8,site=mohfw.gov.in
+$boost=7,site=statisticindia.gov.in
+$boost=7,site=who.int
+$boost=6,site=icmr.org.in
+
+! --- Brazil ---
+$boost=8,site=gov.br
+$boost=7,site=ms.gov.br
+$boost=7,site=ibge.gov.br
+
+! --- International Organizations (supra-national) ---
+$boost=9,site=un.org
+$boost=9,site=who.int
+$boost=9,site=worldbank.org
+$boost=8,site=imf.org
+$boost=8,site=oecd.org
+$boost=8,site=ituc.org
+$boost=8,site=who.int
+$boost=7,site=unicef.org
+$boost=7,site=unhcr.org
+$boost=7,site=worldhealthorganization.org
+$boost=7,site=who.int
+$boost=7,site=un.org
+$boost=7,site=who.int
+$boost=6,site=who.int
+$boost=6,site=who.int
+
+! ============================================================
+! LAYER 4 — BOOST: Academic / Peer-reviewed
+! ============================================================
+
+$boost=8,site=arxiv.org
+$boost=8,site=nature.com
+$boost=8,site=science.org
+$boost=8,site=pnas.org
+$boost=8,site=cell.com
+$boost=8,site=nejm.org
+$boost=8,site=thelancet.com
+$boost=8,site=bmj.com
+$boost=7,site=jamanetwork.com
+$boost=7,site=pubmed.ncbi.nlm.nih.gov
+$boost=7,site=doi.org
+$boost=7,site=semanticscholar.org
+$boost=7,site=plos.org
+$boost=7,site=frontiersin.org
+$boost=7,site=*.edu
+$boost=6,site=*.ac.uk
+$boost=6,site=*.edu.au
+$boost=6,site=*.edu.ca
+$boost=6,site=*.ac.jp
+$boost=6,site=*.edu.in
+
+! ============================================================
+! LAYER 5 — BOOST: Medical / Health (international)
+! ============================================================
+
+$boost=8,site=nhs.uk
+$boost=8,site=mayoclinic.org
+$boost=8,site=hopkinsmedicine.org
+$boost=7,site=clevelandclinic.org
+$boost=7,site=who.int
+$boost=7,site=healthycanadians.gc.ca
+$boost=7,site=health.gov.au
+$boost=7,site=mohfw.gov.in
+$boost=7,site=mhlw.go.jp
+$boost=6,site=medlineplus.gov
+$boost=6,site=cochranelibrary.com
+$boost=6,site=uptodate.com
+$boost=6,site=bmj.com
+
+! ============================================================
+! LAYER 6 — BOOST: Wikipedia & Encyclopedic
+! ============================================================
+
+$boost=6,site=en.wikipedia.org
+$boost=6,site=de.wikipedia.org
+$boost=6,site=fr.wikipedia.org
+$boost=6,site=ja.wikipedia.org
+$boost=6,site=es.wikipedia.org
+$boost=5,site=wiktionary.org
+$boost=5,site=commons.wikimedia.org
+$boost=5,site=archive.org
+$boost=5,site=gutenberg.org
+$boost=4,site=standardebooks.org
+$boost=4,site=etymonline.com
+$boost=4,site=merriam-webster.com
+
+! ============================================================
+! LAYER 7 — BOOST: Coding / Developer (official docs)
+! ============================================================
+
+$boost=7,site=developer.mozilla.org
+$boost=7,site=docs.python.org
+$boost=7,site=go.dev
+$boost=7,site=react.dev
+$boost=7,site=vuejs.org
+$boost=7,site=svelte.dev
+$boost=7,site=github.com
+$boost=6,site=stackoverflow.com
+$boost=6,site=rust-lang.org
+$boost=6,site=kotlinlang.org
+$boost=6,site=docs.oracle.com
+$boost=6,site=php.net
+$boost=6,site=nginx.org
+$boost=6,site=postgresql.org
+$boost=6,site=mysql.com
+$boost=5,site=css-tricks.com
+$boost=5,site=smashingmagazine.com
+$boost=5,site=web.dev
+$boost=5,site=caniuse.com
+$boost=4,site=exercism.org
+$boost=4,site=adventofcode.com
+
+! ============================================================
+! LAYER 8 — BOOST: Established Journalism (international)
+! ============================================================
+
+$boost=5,site=theguardian.com
+$boost=5,site=bbc.co.uk
+$boost=5,site=aljazeera.com
+$boost=5,site=reuters.com
+$boost=5,site=apnews.com
+$boost=5,site=afp.com
+$boost=5,site=propublica.org
+$boost=5,site=theintercept.com
+$boost=5,site=arstechnica.com
+$boost=5,site=theverge.com
+$boost=4,site=france24.com
+$boost=4,site=404media.co
+$boost=4,site=thehindu.com
+$boost=4,site=indianexpress.com
+$boost=4,site=timesofindia.com
+$boost=4,site=bloomberg.com
+$boost=4,site=ft.com
+$boost=4,site=nytimes.com
+$boost=4,site=theatlantic.com
+
+! ============================================================
+! LAYER 9 — BOOST: Science Communication
+! ============================================================
+
+$boost=5,site=scientificamerican.com
+$boost=5,site=quanta-magazine.org
+$boost=5,site=nationalgeographic.com
+$boost=5,site=smithsonianmag.com
+$boost=4,site=theconversation.com
+$boost=4,site=aeon.co
+$boost=4,site=nautil.us
+$boost=4,site=wellcome.org
+$boost=4,site=royalsociety.org   
