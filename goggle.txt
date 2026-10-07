@@ -1,7 +1,5 @@
 ! name: Real Information (International)
-! description: Filters out AI content farms. Boosts authoritative
-!   international government, academic, and human-written sources.
-!   US gov political sites downranked; data/science sites kept.
+! description: Filters out AI content farms. Boosts authoritative international government, academic, and human-written sources. US gov political sites downranked; data/science sites kept.
 ! public: true
 ! author: Joshua Hyatt
 
@@ -60,7 +58,7 @@ $downrank=3,site=cdc.gov
 $downrank=3,site=fda.gov
 $downrank=3,site=hhs.gov
 
-! --- US Gov: Data/science (kept but not boosted hard) ---
+! --- US Gov: Data/science ---
 $boost=3,site=census.gov
 $boost=3,site=nasa.gov
 $boost=3,site=nist.gov
@@ -86,7 +84,7 @@ $downrank=4,site=medicalnewstoday.com
 $downrank=3,site=webmd.com
 
 ! ============================================================
-! LAYER 3 — BOOST: International Government (top tier)
+! LAYER 3 — BOOST: International Government
 ! ============================================================
 
 ! --- United Kingdom ---
@@ -170,22 +168,16 @@ $boost=8,site=gov.br
 $boost=7,site=ms.gov.br
 $boost=7,site=ibge.gov.br
 
-! --- International Organizations (supra-national) ---
+! --- International Organizations ---
 $boost=9,site=un.org
 $boost=9,site=who.int
 $boost=9,site=worldbank.org
 $boost=8,site=imf.org
 $boost=8,site=oecd.org
 $boost=8,site=ituc.org
-$boost=8,site=who.int
 $boost=7,site=unicef.org
 $boost=7,site=unhcr.org
 $boost=7,site=worldhealthorganization.org
-$boost=7,site=who.int
-$boost=7,site=un.org
-$boost=7,site=who.int
-$boost=6,site=who.int
-$boost=6,site=who.int
 
 ! ============================================================
 ! LAYER 4 — BOOST: Academic / Peer-reviewed
@@ -205,15 +197,17 @@ $boost=7,site=doi.org
 $boost=7,site=semanticscholar.org
 $boost=7,site=plos.org
 $boost=7,site=frontiersin.org
-$boost=7,site=https://*.edu
-$boost=6,site=https://*.ac.uk
-$boost=6,site=https://*.edu.au
-$boost=6,site=https://*.edu.ca
-$boost=6,site=https://*.ac.jp
-$boost=6,site=https://*.edu.in
+
+! --- Academic TLDs ---
+*.edu^$boost=7
+*.ac.uk^$boost=6
+*.edu.au^$boost=6
+*.edu.ca^$boost=6
+*.ac.jp^$boost=6
+*.edu.in^$boost=6
 
 ! ============================================================
-! LAYER 5 — BOOST: Medical / Health (international)
+! LAYER 5 — BOOST: Medical / Health
 ! ============================================================
 
 $boost=8,site=nhs.uk
@@ -248,7 +242,7 @@ $boost=4,site=etymonline.com
 $boost=4,site=merriam-webster.com
 
 ! ============================================================
-! LAYER 7 — BOOST: Coding / Developer (official docs)
+! LAYER 7 — BOOST: Coding / Developer
 ! ============================================================
 
 $boost=7,site=developer.mozilla.org
@@ -274,7 +268,7 @@ $boost=4,site=exercism.org
 $boost=4,site=adventofcode.com
 
 ! ============================================================
-! LAYER 8 — BOOST: Established Journalism (international)
+! LAYER 8 — BOOST: Established Journalism
 ! ============================================================
 
 $boost=5,site=theguardian.com
@@ -309,4 +303,4 @@ $boost=4,site=theconversation.com
 $boost=4,site=aeon.co
 $boost=4,site=nautil.us
 $boost=4,site=wellcome.org
-$boost=4,site=royalsociety.org   
+$boost=4,site=royalsociety.org
